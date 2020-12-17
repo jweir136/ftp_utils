@@ -28,11 +28,24 @@ pub fn stream_file<W: Write>(stream: &mut W, filename: &str) -> Result<(), FTPEr
                     }
                 }
             };
-
-            Ok(())
         },
         Err(_) => {
             Err(FTPError::CannotOpenFile)
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::{Read, Write};
+    use std::fs::File;
+
+    #[test]
+    fn stream_file_test() {
+        let filename = "test.txt";
+        let mut writer = File::create("newtest.txt").unwrap();
+
+        stream_file(&mut writer, filename);
     }
 }
