@@ -1,4 +1,5 @@
-pub enum FTPErrors {
+pub enum FTPError {
     CannotOpenFile,
-    CannotRead
+    CannotRead,
+    CannotWrite
 }
