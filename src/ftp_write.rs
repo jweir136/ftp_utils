@@ -24,7 +24,7 @@ use crate::errors::FTPError;
 ///     (1)     The ```return``` statements are intentional. They were used over the most 'rust prefered'
 ///                 method. The ```return``` statements are used to that the multiple ```match``` statements may be used 
 ///                 may be used in order to account for custom error handling of all errors.
-pub fn stream_file<W: Write>(stream: &mut W, filename: &str) -> Result<(), FTPError> {
+pub fn stream_file<W: Write + Read>(stream: &mut W, filename: &str) -> Result<(), FTPError> {
     match File::open(filename) {
         Ok(mut file) => {
             let mut buff: [u8; 256] = [0; 256];
