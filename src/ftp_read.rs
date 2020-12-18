@@ -61,6 +61,7 @@ mod tests {
     use std::slice;
     use std::io;
 
+    // note: this test will create a file.
     #[test]
     fn stream_to_file_test() {
         let mut f1 = File::open("newtest.txt").unwrap();
